@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Quicksand:wght@600&display=swap');
+</style>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <h1>Bienvenue sur vôtre Dashboard</h1>
+    <div class="dashboard">
+        <form method="GET" action="/nouvelle_recette/creation_recette">
+            <button type="submit" class="create-recipe-button">Créer ma recette</button>
+        </form>
+
+        <form action="/recettes" method="get">
+            <button type="submit" class="create-recipe-button">Liste de recettes</button>
+        </form>
+
+        <form action="/" method="get">
+            <button type="submit" class="create-recipe-button">Programmes</button>
+        </form>
+
+        <form action="/" method="get">
+            <button type="submit" class="create-recipe-button">Mouvements</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Style des cartes */
+        .cartes-recettes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .carte-recette {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .carte-recette a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+        }
+
+        .carte-recette img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .carte-recette p {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* Effet de survol */
+        .carte-recette:hover {
+            transform: scale(1.05);
+        }
+
+        .carte-recette:hover img {
+            transform: scale(1.2);
+        }
+
+        .bouton {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .bouton:hover {
+            background-color: #ff4500;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Liste des recettes</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des recettes</h1>
+
+        <!-- Formulaire de filtre par catégorie -->
+        <form action="/recettes" method="GET">
+            <label for="categorie">Sélectionnez une catégorie :</label>
+            <select id="categorie" name="categorie">
+                <option value="" disabled selected>Choisissez une categorie</option>
+                <option value="">Toutes les catégories</option>
+                {% for cat in categories %}
+                    <option value="{{ cat }}">{{ cat }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Filtrer">
+        </form>
+
+        <div class="cartes-recettes">
+            {% for recette in recettes %}
+                <div class="carte-recette">
+                    <a href="/recette/{{ recette.id }}">
+                        {% if recette.photo %}
+                            <img src="{{ url_for('static', filename='uploads/' + recette.photo) }}" alt="{{ recette.nom }}">
+                        {% else %}
+                            <!-- Afficher une image par défaut ou un texte alternatif -->
+                            <p>Image non disponible</p>
+                        {% endif %}
+                        <p>{{ recette.nom }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="boutons">
+            <button class="bouton"><a href="/">Home</a></button>
+            <button class="bouton"><a href="/nouvelle_recette/creation_recette">Créer une nouvelle recette</a></button>
+        </div>
+    </div>
+</body>
+</html>

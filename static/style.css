@@ -1,0 +1,251 @@
+/* Réinitialiser les styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles généraux pour le corps de la page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #FF6B6B, #FFAA71);
+    color: #333;
+    margin-left: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* En-tête de page */
+header {
+    background-color: #1e90ff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Titre de la page */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Bouton de création de recette */
+.create-recipe-button, .bouton {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.boutons {
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
+}
+
+.create-recipe-button:hover, .bouton:hover {
+    background-color: #ff4500;
+}
+
+/* Formulaire de création de recette */
+form {
+    margin-top: 20px;
+}
+
+/* Styles spécifiques pour le formulaire */
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 60%; /* Maximum de 20% de la largeur de la page */
+}
+
+/* Bouton "Ajouter un ingrédient" */
+#add-ingredient {
+    margin-top: 20px;
+    background-color: #32cd32; /* Couleur verte */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-ingredient:hover {
+    background-color: #228b22; /* Couleur verte plus foncée au survol */
+}
+
+.liste_ingredient {
+    margin-top: 20px;
+}
+
+
+form textarea {
+    resize: none; /* Empêche le redimensionnement de la fenêtre de texte */
+    max-width: 100%; /* Maximum de 50% de la largeur de la page pour la description */
+}
+
+form input[type="submit"] {
+    background-color: #1e90ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0d73f5;
+}
+
+/* Styles responsifs */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    form label {
+        font-size: 0.9rem;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form select,
+    form textarea {
+        padding: 5px;
+        font-size: 0.9rem;
+        max-width: 100%; /* Retour à 100% de la largeur pour les écrans plus petits */
+    }
+
+    form input[type="submit"] {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+.recette-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    grid-gap: 20px; /* Espacement entre les éléments */
+    border: 2px solid #ddcbcb; /* Bordure blanche autour de la recette */
+    padding: 20px; /* Espacement à l'intérieur de la bordure */
+    border-radius: 10px; /* Coins arrondis */
+    background-color: #ddcbcb; /* Fond blanc */
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.recette-header {
+    grid-column: 1; /* Occupera les deux colonnes */
+    grid-row: 1;
+}
+
+.recette img {
+    max-width: 100%;
+    height: auto;
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+}
+
+.recette-ingredients {
+    grid-column: 1; /* Ingrédients dans la première colonne */
+    grid-row: 2;
+}
+
+.recette ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.recette ul li {
+    margin-bottom: 5px;
+}
+
+.recette-process {
+    grid-column: 1 / span 2; /* Processus dans la deuxième colonne */
+    grid-row: 3;
+}
+
+.recette p {
+    font-size: 16px;
+    margin-top: 10px; /* Espace entre le processus et les ingrédients */
+}
+
+.title {
+    margin: 20px;
+    text-align: center;
+    grid-column: 1 / span 2; /* Le titre occupe les deux colonnes */
+}
+
+.grid_container_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Une colonne */
+    grid-template-rows: auto auto 1fr; /* Trois lignes, la première deux sont automatiques, la troisième prend tout l'espace disponible */
+    grid-gap: 20px; /* Espacement entre les éléments */
+    padding: 20px; /* Espacement à l'intérieur de la bordure */
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+/* Styles pour chaque section */
+.premier_colonne {
+    grid-column: 1;
+    grid-row: 1; /* Cette section occupe la première ligne */
+    padding-left: 40px;
+}
+
+.ingredient-entry {
+    grid-column: 2;
+    grid-row: 1; /* Cette section occupe la deuxième ligne */
+    padding-left: 40px
+}
+
+.process {
+    grid-column: 1 / span 2; /* Cette section occupe les deux colonnes, à partir de la première colonne */
+    grid-row: 2; /* Cette section occupe la troisième ligne */
+    padding-left: 20px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}

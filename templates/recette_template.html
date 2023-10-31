@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Recette</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+</head>
+<body>
+    <div class="recette-container">
+        <div class="recette-header">
+            <h1>{{ recette.nom }}</h1><br>
+            <h4>Catégorie : {{ recette.categorie }}</h4>
+        </div>
+        <img src="{{ url_for('static', filename='uploads/' + recette.photo) }}" alt="Recette Image">
+        <div class="recette-ingredients">
+            <ul>
+                {% for ingredient in recette.ingredients %}
+                    <li>{{ ingredient.nom }} {{ ingredient.quantite }} {{ ingredient.unite }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="recette-process">
+            <p>{{ recette.process | replace('\n', '<br>') }}</p>
+        </div>
+    </div>
+    
+
+
+    <div class="boutons">
+        <button class="bouton"><a href="/">Home</a></button>
+        <button class="bouton"><a href="/nouvelle_recette/creation_recette">Créer une nouvelle recette</a></button>
+    </div>
+      
+</body>
+</html>
